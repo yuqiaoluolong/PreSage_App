@@ -7,4 +7,5 @@ This is an application for PreSage users to login and view live-feed. Below is t
     
 ## 1. create a new React Project    
 open Android Studio and the terminal in it. run the code in the terminal(make sure you are in the desired location for the app before runing the code).
-        npx create-react-app presage_app
+        #'npx create-react-app presage_app'#
+        
