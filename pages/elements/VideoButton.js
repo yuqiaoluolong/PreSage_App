@@ -23,13 +23,13 @@ export default class VideoButton extends Component{
     _renderButton() {
         if (this.props.enable===true) {
             return(
-                <TouchableOpacity       // let it become a button which are able to navigate to other pages after clicking
+                <TouchableOpacity      
                     onPress={this.props.onPress}
                     activeOpacity={0.2}
                     focusedOpacity={0.5}
                     style={[styles.button, this.props.buttonStyle]}>
                     <View style={styles.container}>
-                        <Image style={styles.play} source={require('./images/video.png')} />        // attach the desired image(video image here)
+                        <Image style={styles.play} source={require('./images/video.png')} />        
                     </View>
                 </TouchableOpacity>
             );
