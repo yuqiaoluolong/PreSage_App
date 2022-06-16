@@ -2,27 +2,27 @@ import { StyleSheet } from 'react-native';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginPage from './pages/Login'                               // The following 4 pages are written in the pages file
+import LoginPage from './pages/Login'
 import DashboardPage from './pages/Dashboard'
 import EventLogPage from './pages/Event'
-import VideoPlayPage from './pages/Play'                            //
+import VideoPlayPage from './pages/Play'
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">                    // This is for building up the stack of ages
-        <Stack.Screen name="Login" component={LoginPage} />         // 1st page in the stack, would be shown when the app is opened
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={LoginPage} />
         <Stack.Screen name="Dashboard" component={DashboardPage} />
         <Stack.Screen name="EventLog" component={EventLogPage} />
         <Stack.Screen name="Play" component={VideoPlayPage} />
-      </Stack.Navigator>                                            // the end of stack
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({                                  // the style defined for later use in picture display
+const styles = StyleSheet.create({
     logo: {
         width: 365,
         height: 100,
