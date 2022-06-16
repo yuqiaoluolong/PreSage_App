@@ -1,4 +1,4 @@
 # PreSage_App
 
-what need to have before installation:
+## what is required to have before installation:
   
