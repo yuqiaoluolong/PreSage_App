@@ -24,6 +24,32 @@ Then install the following dependencies:
 
         npm install @react-navigation/native
         npm install react-native-screens react-native-safe-area-context
+        npm install @react-navigation/native-stack
         
 If you are on a Mac and developing for iOS, run the following code:
+
         npx pod-install ios
+After that, refer to the site: https://stackoverflow.com/questions/36289125/react-native-fetch-from-https-server-with-self-signed-certificate 
+to fix the self-signed certificate problem. Refer to the first answer to fix that for iOS simulator and follow the second one to fix that for android simulator.Since the 2nd answer is unclear, below is detailed explanation.
+
+Create a new file named CustomClientFactory.java in the folder where MainApplication.java is located(ancroid/app/src/main/java/com/presageapp/MainApplication.java). Copy and paste the first part of code in the 2nd answer into it. Remember to add the following line of code at the top:
+
+        package com.presageapp;
+Delete the following line of code in CustomClientFactory.java(at the bottom, the last few lines):
+
+        Log.e(TAG, e.getMessage());
+        
+
+In MainApplication.java:
+
+add the following line of code at the top:
+
+        import com.facebook.react.modules.network.OkHttpClientProvider;
+add the following line of code in the end of the function ' @Override public void onCreate()':
+
+        OkHttpClientProvider.setOkHttpClientFactory(new CustomClientFactory());
+
+## 3. run the code in simulators        
+
+        npx react-native run-ios
+        npx react-native run-android
