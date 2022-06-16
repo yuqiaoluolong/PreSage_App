@@ -3,16 +3,16 @@ import { Text, Image, TextInput, View, Button, ScrollView, StyleSheet } from 're
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import RoundedButton from './elements/RoundedButton'        // import from elements file and would be used as login button
+import RoundedButton from './elements/RoundedButton'
 
 export default function LoginPage({ navigation }) {
     var arr;
-    const [status, setStatus] = useState(true);     // this stateful variable represents the status info received from the server
-    const [username, setUsername] = useState(true);     // this stateful variable represents the username user enters in the TextInput part
-    const [password, setPassword] = useState(true);     // this stateful variable represents the password user enters in the TextInput part
+    const [status, setStatus] = useState(true);
+    const [username, setUsername] = useState(true);
+    const [password, setPassword] = useState(true);
     const onPressLearnMore = (
 
-    fetch('https://aictest.hopto.org/PreSAGE/auth/login', {     // fetch url to call login API
+    fetch('https://aictest.hopto.org/PreSAGE/auth/login', {
           method: 'POST',
           headers: {
              'Content-Type': 'application/json',
@@ -29,11 +29,11 @@ export default function LoginPage({ navigation }) {
       .then((json) => {
       console.log(json)
       arr = json.status
-      setStatus(json.status)        // if login successful, status would be undefined
+      setStatus(json.status)
       })
       .catch((error) => console.error(error)),
     console.log(status),
-    typeof status == 'undefined' ? () => navigation.navigate('Dashboard') : () => navigation.navigate('Login')      // let the button navigate user to Dashboard only if status is undefined
+    typeof status == 'undefined' ? () => navigation.navigate('Dashboard') : () => navigation.navigate('Login')
     )
                    return (
                        <View style={{backgroundColor: "#fff"}}>
@@ -45,7 +45,7 @@ export default function LoginPage({ navigation }) {
                                    {"\t"}Log-in to your account
                                    {"\n"}
                                </Text>
-                               <Text style={styles.baseText}>{"\t"}Username</Text>      // 2 text input box for username and password
+                               <Text style={styles.baseText}>{"\t"}Username</Text>
                                <TextInput
                                        style={{ margin: 20, height: 50, borderColor: 'gray', borderWidth: 1, borderRadius: 10}}
                                        placeholder="  Enter Username"
@@ -60,7 +60,7 @@ export default function LoginPage({ navigation }) {
                                        secureTextEntry={true}
                                        />
                            </View>
-                           <RoundedButton       // login button
+                           <RoundedButton
                                    enable={true}
                                    textStyle={styles.textStyle}
                                    text='Login'
