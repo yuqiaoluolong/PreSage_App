@@ -3,19 +3,19 @@ import { Text, Image, TextInput, View, Button, ScrollView, StyleSheet } from 're
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import RoundedButton from './elements/RoundedButton'        // the following 5 elements(buttons) are imported from the 'elements' file
+import RoundedButton from './elements/RoundedButton'
 import VideoButton from './elements/VideoButton'
 import SoundButton from './elements/SoundButton'
 import PlayButton from './elements/PlayButton'
-import EtcButton from './elements/EtcButton'                // see details in the code in 'elements' file
+import EtcButton from './elements/EtcButton'
 
 export default function DashboardPage({ navigation }) {
 
-    const [status, setStatus] = useState(true);             // this stateful variable is declared to identify whether to navigate user to Play page or stay in the Dashboard.
+    const [status, setStatus] = useState(true);
 
-    const onPressLearnMore1 = (                             // fetch url request
+    const onPressLearnMore1 = (
 
-    fetch('https://aictest.hopto.org/PreSAGE/cameras/3/on', {   // url
+    fetch('https://aictest.hopto.org/PreSAGE/cameras/3/on', {
           method: 'GET',
           headers: {
              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlci1hZG1pbiIsInNjb3BlcyI6IlJPTEVfU1VQRVJVU0VSIiwiaWF0IjoxNjUzODc2Njc5LCJleHAiOjE2NTM5NjMwNzl9.GVpVYzkETy7urkW1F-iRKZXiWOWAYPausXXbztlG_Lk',
@@ -25,15 +25,15 @@ export default function DashboardPage({ navigation }) {
              'Content-Length': 65
           }
         })
-      .then((response) => {         // what to do with the response
-      console.log(response)         // log out the response in the terminal
-      setStatus(999)                // set status to 999 if the url request is successful and get a response
+      .then((response) => {
+      console.log(response)
+      setStatus(999)
       })
       .catch((error) => console.error(error)),
     console.log(status)
     );
 
-    const onPressLearnMore2 = (status == 999 ? () => navigation.navigate('Play') : () => navigation.navigate('Dashboard')); // let the play button navigate user to Play page only if status is 999
+    const onPressLearnMore2 = (status == 999 ? () => navigation.navigate('Play') : () => navigation.navigate('Dashboard'));
 
     return (
         <View style={{backgroundColor:'#fff', height: 800}}>
@@ -66,7 +66,7 @@ export default function DashboardPage({ navigation }) {
             <View style={{ height: 520 }}>
                 <ScrollView>
                     <Image style={styles.demo_box} source={require('./images/demo_box.png')}/>
-                    <View style={{height:200, width: 300, margin: 30, backgroundColor: "red"}}>     // box 1
+                    <View style={{height:200, width: 300, margin: 30, backgroundColor: "red"}}>
                         <View style={{height:150, backgroundColor: "green"}}>
                             <Image style={styles.box_uphalf} source={require('./images/box_uphalf.png')} />
                         </View>
@@ -77,20 +77,20 @@ export default function DashboardPage({ navigation }) {
                           width: 300,
                           backgroundColor: "#1b9e3f"}} >
                             <View style={{flex: 1}}>
-                                <VideoButton style={styles.box_button} enable={true} onPress={onPressLearnMore1} /> // onPressLearnMore1, clicking would call the function and perform the url request
+                                <VideoButton style={styles.box_button} enable={true} onPress={onPressLearnMore1} />
                             </View>
                             <View style={{flex: 1}}>
                                 <SoundButton style={styles.box_button} enable={true} />
                             </View>
                             <View style={{flex: 1}}>
-                                <PlayButton style={styles.box_button} enable={true} onPress={onPressLearnMore2} />  // onPressLearnMore2, clicking would navigate user to Play if status is 999
+                                <PlayButton style={styles.box_button} enable={true} onPress={onPressLearnMore2} />
                             </View>
                             <View style={{flex: 1}}>
                                 <EtcButton style={styles.box_button} enable={true} />
                             </View>
                         </View>
-                    </View>     // box 1 ends
-                    <View style={{height:200, width: 300, margin: 30, backgroundColor: "red"}}>     // box 2
+                    </View>
+                    <View style={{height:200, width: 300, margin: 30, backgroundColor: "red"}}>
                         <View style={{height:150, backgroundColor: "green"}}>
                             <Image style={styles.box_uphalf} source={require('./images/box_uphalf.png')} />
                         </View>
@@ -113,11 +113,11 @@ export default function DashboardPage({ navigation }) {
                                 <EtcButton style={styles.box_button} enable={true} />
                             </View>
                         </View>
-                    </View>     // box 2 ends
+                    </View>
 
                 </ScrollView>
             </View>
-            <View style={{      // bottom bar images
+            <View style={{
                     flexDirection: "row",
                     height: 30,
                     width: 400,
@@ -135,8 +135,8 @@ export default function DashboardPage({ navigation }) {
                     </View>
 
                 </View>
-            </View>     // bottom bar images ends
-            <View style={{      // bottom bar text and buttons
+            </View>
+            <View style={{
                     flexDirection: "row",
                     height: 70,
                     width: 400,
@@ -151,7 +151,7 @@ export default function DashboardPage({ navigation }) {
                 </View>
                 <View style={{flex: 0.3 }} />
             </View>
-        </View>     // bottom bar text and buttons end
+        </View>
     );
 }
 
